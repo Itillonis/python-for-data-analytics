@@ -4,11 +4,13 @@ PRODUCTION_COST = 400  # (EUR)
 # Расходы на логистику
 EU_LOGISTIC_COST_EUR = 30  # в Европу в евро
 CN_LOGISTIC_COST_USD = 130  # в Китай в долларах
+RU_LOGISTIC_COST_RUB = 5000 # в Россию в рублях
 
 costs = {
     'PRODUCTION_COST': PRODUCTION_COST,
     'EU_LOGISTIC_COST_EUR': EU_LOGISTIC_COST_EUR,
     'CN_LOGISTIC_COST_USD': CN_LOGISTIC_COST_USD,
+    'RU_LOGISTIC_COST_RUB': RU_LOGISTIC_COST_RUB
 }
 
 # Справочная информация по клиентам(объемы, локации, комментарии)

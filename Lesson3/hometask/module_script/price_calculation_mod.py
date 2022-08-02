@@ -32,20 +32,15 @@ def calculate_prices():
     main_df['MWP_PRICE_USD_CN'] = main_df['MWP_PRICE_USD'] + costs.get('CN_LOGISTIC_COST_USD')
     main_df['MWP_PRICE_EUR_EU_MA'] = main_df.MWP_PRICE_EUR_EU.rolling(window=3).mean()
 
-
-
-
     # Создаем отдельный файл для каждого из клиентов
-
-
-    rcParams['figure.figsize'] = 15,7
+    rcParams['figure.figsize'] = 15, 7
 
     print("Готовим отдельный файл для клиентов")
     for client, v in customers.items():
 
         # Создаем директорию и путь к файлу
         client_price_path = os.path.join(prices_path, f"{client.lower()}")
-        if not os.path.exists(client_price_path ):
+        if not os.path.exists(client_price_path):
             os.makedirs(client_price_path)
 
         calculation_date = datetime.today().date().strftime(format="%d%m%Y")
@@ -83,7 +78,6 @@ def calculate_prices():
                 disc = discounts.get(max(discounts.keys()))
 
             client_price = main_df['MWP_PRICE_USD_CN'].mul((1 - disc)).add(costs.get('CN_LOGISTIC_COST_USD')).round(2)
-        print(client_price.head())
         with pd.ExcelWriter(client_price_file_path, engine='xlsxwriter') as writer:
             client_price.to_excel(writer, sheet_name='price')
 
