@@ -113,7 +113,7 @@ else:
             client_price = dollar_prices_df.iloc[:, :-1].add(PRODUCTION_COST / main_df['EURUSD'], axis=0) * (
                         1 - discount) + CN_LOGISTIC_COST_USD
         elif description.get('location') == "RU":
-            client_price = rub_prices_df.iloc[:, :-1].add(PRODUCTION_COST / main_df['EURUSD'], axis=0) * (
+            client_price = rub_prices_df.iloc[:, :-1].add(PRODUCTION_COST * main_df['EURRUB'], axis=0) * (
                         1 - discount) + RU_LOGISTIC_COST_RUB
         if description.get('comment') == 'moving_average':
             client_price = client_price.rolling(window=3).mean()
